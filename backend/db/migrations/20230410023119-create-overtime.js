@@ -10,7 +10,11 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       userId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'users',
+          key: 'userId'
+        }
       },
       dateOvertime: {
         type: Sequelize.DATE
@@ -19,7 +23,7 @@ module.exports = {
         type: Sequelize.TEXT
       },
       status: {
-        type: Sequelize.ENUM
+        type: Sequelize.ENUM('pending', 'approved', 'rejected')
       },
       createdAt: {
         allowNull: false,

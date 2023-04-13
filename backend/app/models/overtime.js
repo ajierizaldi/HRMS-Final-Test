@@ -10,7 +10,11 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      this.belongsTo(models.user, {
+        foreignKey: 'userId',
+        // targetKey: 'userId',
+        as: 'user'
+      })
     }
   }
   overtime.init({
@@ -23,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
     userId: DataTypes.INTEGER,
     dateOvertime: DataTypes.DATE,
     reason: DataTypes.TEXT,
-    status: DataTypes.ENUM
+    status: DataTypes.ENUM('pending', 'approved', 'rejected')
   }, {
     sequelize,
     modelName: 'overtime',

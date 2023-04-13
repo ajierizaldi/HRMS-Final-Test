@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     name: DataTypes.STRING,
     url: DataTypes.STRING,
-    role: DataTypes.ENUM
+    role: DataTypes.ENUM('employee', 'hr')
   }, {
     sequelize,
     modelName: 'menu',
